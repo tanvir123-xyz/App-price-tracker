@@ -1,6 +1,50 @@
 [
     {
-        "package_id": "com.spotify.music",
+        "package_id": "air.com.RustyLake.UndergroundBlossom",
+        "country": "in"
+    },
+    {
+        "package_id": "amanita_design.samorost3.GP",
+        "country": "in"
+    },
+    {
+        "package_id": "com.bitbybitstudios.fiz",
+        "country": "in"
+    },
+    {
+        "package_id": "net.crestinc.underworldoffice",
+        "country": "in"
+    },
+    {
+        "package_id": "com.caracolu.alterego.complex",
+        "country": "in"
+    },
+    {
+        "package_id": "com.creativemobile.beholder",
+        "country": "in"
+    },
+    {
+        "package_id": "com.fansipan.stickman.shadow.knights.fightinggames",
+        "country": "in"
+    },
+    {
+        "package_id": "com.playdigious.littlenightmare",
+        "country": "in"
+    },
+    {
+        "package_id": "eu.bandainamcoent.verylittlenightmares",
+        "country": "in"
+    },
+    {
+        "package_id": "com.terribletoybox.thimbleweedparkandroid",
+        "country": "in"
+    },
+    {
+        "package_id": "de.application_systems.TheLonging",
+        "country": "in"
+    },
+    {
+        "package_id": "es.brokenrul.oldmansjourney",
         "country": "in"
     }
 ]
