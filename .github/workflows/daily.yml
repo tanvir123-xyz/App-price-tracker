@@ -1,0 +1,47 @@
+name: Play Store Price Tracker
+
+on:
+  schedule:
+    # GitHub cron uses UTC. "0 4,16 * * *" = 04:00 and 16:00 UTC
+    # (09:30 and 21:30 IST).
+    - cron: "0 4,16 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run price tracker
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python track_prices.py
+
+      - name: Commit updated database
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add prices.db
+          if git diff --cached --quiet; then
+            echo "prices.db unchanged; nothing to commit."
+          else
+            git commit -m "Update tracked prices"
+            git push
+          fi
